@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral80"
+    tools:context=".Activity.InsertNotesActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/material_dynamic_neutral80"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/notesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/product_sans_bold"
+            android:hint="Title..."
+            android:padding="7dp"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/notesSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/product_sans_regular"
+            android:hint="Subtitle..."
+            android:minHeight="48dp"
+            android:padding="7dp"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/notesData"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/product_sans_regular"
+            android:gravity="start"
+            android:hint="Notes..."
+            android:minHeight="48dp"
+            android:padding="7dp"
+            android:textIsSelectable="true"
+            android:textSize="22sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:padding="7dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/undo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="clip_horizontal"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="20dp"
+                android:clickable="true"
+                android:contentDescription="Undo Button"
+                android:onClick="undoOperation"
+                app:backgroundTint="@color/teal_200"
+                app:srcCompat="@drawable/ic_baseline_undo_24" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/redo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="clip_horizontal"
+                android:clickable="true"
+                android:contentDescription="Redo Button"
+                android:onClick="redoOperation"
+                app:backgroundTint="@color/purple_200"
+                app:srcCompat="@drawable/ic_baseline_redo_24" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/doneNotesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="26dp"
+        android:backgroundTint="@color/green"
+        android:clickable="true"
+        android:contentDescription="New notes done button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/yellow"
+        app:srcCompat="@drawable/ic_baseline_done_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
