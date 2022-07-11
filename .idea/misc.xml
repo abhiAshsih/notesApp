@@ -7,11 +7,12 @@
         <entry key="app/src/main/res/drawable/delete_sheet.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/edit_text_background.xml" value="0.2405" />
         <entry key="app/src/main/res/drawable/ic_baseline_note_add_24.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1505" />
         <entry key="app/src/main/res/drawable/no_delete.xml" value="0.227" />
         <entry key="app/src/main/res/drawable/yes_delete.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_insert_notes.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.20364583333333333" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_update_notes.xml" value="0.2210144927536232" />
         <entry key="app/src/main/res/layout/delete_bottom_sheet.xml" value="0.2718631178707224" />
         <entry key="app/src/main/res/layout/delete_indicator_shape.xml" value="0.19429347826086957" />

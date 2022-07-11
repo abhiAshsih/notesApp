@@ -65,7 +65,6 @@ public class InsertNotesActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     public void undoOperation(View view){
