@@ -23,4 +23,7 @@ public interface NotesDao {
     @Update
     void updateNodes(Notes notes);
 
+    @Query("SELECT notes_image FROM NOTES_DATABASE")
+    LiveData<List<String>> getNotesImage();
+
 }

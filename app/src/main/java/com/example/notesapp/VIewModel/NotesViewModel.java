@@ -15,6 +15,7 @@ public class NotesViewModel extends AndroidViewModel {
 
     public NotesRepository repository;
     public LiveData<List<Notes>> getAllNotes;
+    public LiveData<List<String>>getAllImages;
 
 
     public NotesViewModel(Application application) {
@@ -22,7 +23,7 @@ public class NotesViewModel extends AndroidViewModel {
 
         repository = new NotesRepository(application);
         getAllNotes = repository.getAllNotes;
-
+        getAllImages = repository.getAllImages;
     }
 
     public void insertNote(Notes notes) {

@@ -49,4 +49,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     implementation "android.arch.lifecycle:extensions:1.1.1"
+
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 }

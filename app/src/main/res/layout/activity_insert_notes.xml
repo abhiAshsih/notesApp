@@ -8,6 +8,7 @@
     tools:context=".Activity.InsertNotesActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -56,17 +57,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="7dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/undo"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="clip_horizontal"
-                android:layout_marginLeft="110dp"
-                android:layout_marginRight="20dp"
+                android:layout_weight="1"
                 android:clickable="true"
                 android:contentDescription="Undo Button"
                 android:onClick="undoOperation"
@@ -75,23 +76,51 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/redo"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="clip_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:layout_weight="1"
                 android:clickable="true"
                 android:contentDescription="Redo Button"
                 android:onClick="redoOperation"
                 app:backgroundTint="@color/purple_200"
                 app:srcCompat="@drawable/ic_baseline_redo_24" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/imageUploadBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="insert_image"
+                app:srcCompat="@drawable/ic_baseline_insert_photo_24" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="7dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/doneNotesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/green"
         android:clickable="true"
         android:contentDescription="New notes done button"

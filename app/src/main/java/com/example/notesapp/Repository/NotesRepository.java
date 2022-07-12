@@ -13,11 +13,13 @@ import java.util.List;
 public class NotesRepository {
     public NotesDao notesDao;
     public LiveData<List<Notes>>getAllNotes;
+    public LiveData<List<String>>getAllImages;
 
     public NotesRepository(Application application){
         NotesDatabase database=NotesDatabase.getDatabaseInstance(application);
         notesDao=database.notesDao();
         getAllNotes=notesDao.getAllNotes();
+        getAllImages=notesDao.getNotesImage();
     }
 
     public void insertNotes(Notes notes){

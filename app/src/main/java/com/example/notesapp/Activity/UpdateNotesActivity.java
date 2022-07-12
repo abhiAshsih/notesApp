@@ -3,6 +3,8 @@ package com.example.notesapp.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.notesapp.Adapter.ImageNotesAdapter;
+import com.example.notesapp.Adapter.NotesAdapter;
+import com.example.notesapp.MainActivity;
 import com.example.notesapp.Model.Notes;
 import com.example.notesapp.R;
 import com.example.notesapp.VIewModel.NotesViewModel;
@@ -28,22 +33,27 @@ import java.util.Date;
 import java.util.List;
 
 public class UpdateNotesActivity extends AppCompatActivity {
+    RecyclerView imageRecycler;
+    ImageNotesAdapter adapter;
+    NotesViewModel notesViewModel;
+    String[] imageArr;
     Boolean undoState=false;
     int index=0,max=0;
     List<String> originalNotes=new ArrayList<String>();
     ActivityUpdateNotesBinding binding;
     String stitle,ssubTitle,snotes;
     int iid;
-    NotesViewModel notesViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= ActivityUpdateNotesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         stitle= getIntent().getStringExtra("title");
         ssubTitle= getIntent().getStringExtra("subTitle");
         iid= getIntent().getIntExtra("id",0);
         snotes=getIntent().getStringExtra("notes");
+        imageArr=getIntent().getStringArrayExtra("image");
         binding.upTitle.setText(stitle);
         binding.upSubtitle.setText(ssubTitle);
         binding.upNotes.setText(snotes);
@@ -54,8 +64,11 @@ public class UpdateNotesActivity extends AppCompatActivity {
             String title=binding.upTitle.getText().toString();
             String subtitle=binding.upSubtitle.getText().toString();
             String notes=binding.upNotes.getText().toString();
-
-            UpdateNotes(title,subtitle,notes);
+            List<String> imageNotesList=new ArrayList<>();
+            for(String img:imageArr){
+                imageNotesList.add(img);
+            }
+            UpdateNotes(title,subtitle,notes,imageNotesList);
         });
 
         binding.shareNotesButton.setOnClickListener(v->{
@@ -65,7 +78,6 @@ public class UpdateNotesActivity extends AppCompatActivity {
             String finalString =title + "\n" + subtitle + "\n" + notes;
             ShareNotes(finalString);
         });
-
 
         binding.upNotes.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -84,6 +96,18 @@ public class UpdateNotesActivity extends AppCompatActivity {
                 }
                 return false;
             }
+        });
+
+        imageRecycler=findViewById(R.id.imageRecyclerView);
+        notesViewModel.getAllNotes.observe(this,notes -> {
+            //imageList=notes.notes_image;
+            List<String> imageNotesList=new ArrayList<>();
+            for(String img:imageArr){
+                imageNotesList.add(img);
+            }
+            imageRecycler.setLayoutManager(new GridLayoutManager(this,3));
+            adapter=new ImageNotesAdapter(UpdateNotesActivity.this,imageNotesList);
+            imageRecycler.setAdapter(adapter);
         });
     }
 
@@ -109,7 +133,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
         startActivity(shareIntent);
         finish();
     }
-    private void UpdateNotes(String title, String subtitle, String notes) {
+    private void UpdateNotes(String title, String subtitle, String notes,List<String>imageList) {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:MM, MMMM d");
         Date date = new Date();
         String currTimeAndDate=formatter.format(date).toString();
@@ -120,6 +144,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
         updateNotes.notesSubtitle=subtitle;
         updateNotes.notes=notes;
         updateNotes.notesDate=currTimeAndDate;
+        updateNotes.notesImage=imageList;
         notesViewModel.updateNote(updateNotes);
 
 

@@ -37,13 +37,19 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.notesViewHol
         holder.title.setText(note.notesTitle);
         holder.subTitle.setText(note.notesSubtitle);
         holder.notesDate.setText(note.notesDate);
-
+        String[] imageArr = new String[note.notesImage.size()];
+        int count=0;
+        for(String img:note.notesImage){
+            imageArr[count]=img;
+            count++;
+        }
         holder.itemView.setOnClickListener(V->{
             Intent intent=new Intent(mainActivity, UpdateNotesActivity.class);
             intent.putExtra("id",note.id);
             intent.putExtra("title",note.notesTitle);
             intent.putExtra("subTitle",note.notesSubtitle);
             intent.putExtra("notes",note.notes);
+            intent.putExtra("image",imageArr);
             mainActivity.startActivity(intent);
 
         });

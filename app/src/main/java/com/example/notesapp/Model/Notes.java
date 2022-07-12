@@ -3,6 +3,9 @@ package com.example.notesapp.Model;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(tableName="Notes_Database")
 public class Notes {
@@ -22,7 +25,8 @@ public class Notes {
     @ColumnInfo(name = "notes_date")
     public String notesDate;
 
-    @ColumnInfo(name = "notes_priority")
-    public String notesPriority;
+    @ColumnInfo(name = "notes_image")
+    public List<String> notesImage;
 
 }
+
